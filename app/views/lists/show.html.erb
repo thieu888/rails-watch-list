@@ -1,2 +1,12 @@
-<%@lists.each do |list|%>
-  <%= list.name%>
+<%= @list.name %>
+
+<%=link_to "Creer un nouveau bookmark", new_list_bookmark_path(@list)%>
+
+<%= pluralize(@list.movies.size, "movie") %>
+  <%= "You haven't saved any movies yet!" if @list.movies.empty? %>
+  <ul>
+  <li><% @list.movies.each do |movie| %></li>
+  </ul>
+  <strong><%= movie.title %></strong>
+  <%end%>
+ <li><%= link_to "back to my lists", lists_path %></li>
